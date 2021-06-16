@@ -1,2 +1,4 @@
-*csv
-/old
+.csv
+old
+data
+.ipynb_checkpoints
