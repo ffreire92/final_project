@@ -5,8 +5,8 @@ import numpy as np
 
 import seaborn as sns
 import matplotlib.pyplot as plt
-%matplotlib inline
 import pylab as plt
+plt.rcParams['figure.figsize']=(15, 15)
 
 ## FUNCTIONS ##
 
@@ -17,6 +17,7 @@ plt.rcParams['figure.figsize']=(15, 15)
 # Chart bars #
 
 def graph_bar(kind, dataframe, column, title, color):
+    '''it has as inputs kind ('vertical' or 'horizontal'), the dataframe we'll plot, the respective column, the title of it, and the colour'''
     if kind == 'vertical':
 
         dataframe[column].plot.barh(title=title, grid=1, yticks=[i for i in range(0, int(dataframe[column].max()), 5)],
@@ -63,21 +64,21 @@ def overview(dataframe, title):
     elif title == 'Number of hospitalisations':
         fig, axs = plt.subplots(3)
         fig.suptitle(title)
-        axs[0].plot(dataframe.date, dataframe.num_hosp, color='Orange')
+        axs[0].plot(dataframe.date, dataframe.num_hosp, color='Darkblue')
         axs[0].set_title('Daily')
-        axs[1].plot(dataframe.date, dataframe.ave_7_num_hosp, color='Orange', linewidth=3)
+        axs[1].plot(dataframe.date, dataframe.ave_7_num_hosp, color='Darkblue', linewidth=3)
         axs[1].set_title('Moving 7 day average')
-        axs[2].plot(dataframe.date, dataframe.cumu_num_hosp, color='Orange', linewidth=3)
+        axs[2].plot(dataframe.date, dataframe.cumu_num_hosp, color='Darkblue', linewidth=3)
         axs[2].set_title('Cumulative');
 
     elif title == 'Number of Intensive Care Units':
         fig, axs = plt.subplots(3)
         fig.suptitle(title)
-        axs[0].plot(dataframe.date, dataframe.num_uci, color='Darkblue')
+        axs[0].plot(dataframe.date, dataframe.num_uci, color='Orange')
         axs[0].set_title('Daily')
-        axs[1].plot(dataframe.date, dataframe.ave_7_num_uci, color='Darkblue', linewidth=3)
+        axs[1].plot(dataframe.date, dataframe.ave_7_num_uci, color='Orange', linewidth=3)
         axs[1].set_title('Moving 7 day average')
-        axs[2].plot(dataframe.date, dataframe.cumu_num_uci, color='Darkblue', linewidth=3)
+        axs[2].plot(dataframe.date, dataframe.cumu_num_uci, color='Orange', linewidth=3)
         axs[2].set_title('Cumulative');
 
     elif title == 'Number of deaths':
@@ -93,6 +94,7 @@ def overview(dataframe, title):
 # Moving averages #
 
 def inspect_mov_ave(dataframe):
+    plt.rcParams['figure.figsize'] = (15, 15)
     dataframe = dataframe.copy()
 
     dataframe = dataframe[['date', 'num_infections']]
@@ -108,8 +110,7 @@ def inspect_mov_ave(dataframe):
 
 # Compare moving averages #
 
-def compare_7mov_ave():
-    global bydate
+def compare_7mov_ave(bydate):
 
     plt.plot(bydate[['date', 'ave_7_num_infections']].set_index('date'), 'r', label='7 days moving average',
              linewidth=4)
@@ -122,12 +123,13 @@ def compare_7mov_ave():
 # Sorting data #
 
 def sort_data(dataframe, column):
+    '''It has as inputs the dataframe and a column, so it returns the same dataframe sorted in ascending order by that column'''
     return pd.DataFrame(dataframe[column].sort_values())
 
 # Data cleaning #
 
-def clean_data():
-    global db1
+def clean_data(db1):
+    '''This functions receives db1 as input and performs data some data cleaning'''
 
     # Number of Infections greater than 1:
     db1 = db1[(db1.num_infections > 0)].reset_index()
@@ -159,6 +161,8 @@ def clean_data():
     # Data cleaning sex and age_interval:
     db1 = db1[(db1.sex != 'NC') & (db1.age_interval != 'NC')]
 
+    return db1
+
 # Cumulative #
 
 def cumulative(dataframe):
@@ -175,6 +179,7 @@ def cumulative(dataframe):
 # Relative frequencies #
 
 def freq_rel(dataframe):
+    '''It has as input a dataframe and calculates the relative frequency of the number of infections, hospitalisations, ICU and deaths'''
     dataframe['Number of infection (%)'] = [round(i / dataframe['num_infections'].sum(), 3) * 100 for i in
                                             dataframe['num_infections']]
     dataframe['Number of hospitalisation (%)'] = [round(i / dataframe['num_hosp'].sum(), 3) * 100 for i in
@@ -186,8 +191,8 @@ def freq_rel(dataframe):
     return dataframe
 
 
-def organise(column):
-    global db1
+def organise(db1, column):
+    '''It has as inputs db1 and specific columns of the dataframe, and returns a dataframe grouped by that column with four additional columns with the relative frequency of the number of infections, hospitalisations, ICU and deaths'''
 
     name = db1.groupby(column).sum()
     freq_rel(name)
