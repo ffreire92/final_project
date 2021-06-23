@@ -31,14 +31,16 @@ def graph_bar(kind, dataframe, column, title, color):
 
 
 def severe_cases(dataframe):
+    '''It has as input a dataframe and returns a stacked bar chart filtered by number of hospitalisation, Intensive Car Unit, and deaths'''
     dataframe[['Number of hospitalisation (%)', 'Number of Intensive Care Unit (%)',
                'Number of deaths (%)']].plot.bar(title='Severe Cases', grid=1,
                                                  yticks=[i for i in range(0, 100, 10)],
-                                                 rot=0, fontsize=13, color=['Darkblue', 'Orange', 'Darkred'],
+                                                 rot=0, fontsize=13, color=['Orange', 'Darkblue', 'Darkred'],
                                                  stacked=True, figsize=(15, 10))
 # Evolution "
 
 def overview(dataframe, title):
+    '''It has as input a dataframe and the title to designate, and returns a line chart of the evolution over time'''
     if title == 'evolution':
         fig, axs = plt.subplots(4)
         fig.suptitle('Pandemic evolution')
@@ -94,6 +96,7 @@ def overview(dataframe, title):
 # Moving averages #
 
 def inspect_mov_ave(dataframe):
+    '''it has as input a dataframe an return the comparison of different moving averages'''
     plt.rcParams['figure.figsize'] = (15, 15)
     dataframe = dataframe.copy()
 
@@ -111,7 +114,7 @@ def inspect_mov_ave(dataframe):
 # Compare moving averages #
 
 def compare_7mov_ave(bydate):
-
+    '''receives a dataframe as input and returns a plot with two curves, the daily infections and the moving average of 7 days'''
     plt.plot(bydate[['date', 'ave_7_num_infections']].set_index('date'), 'r', label='7 days moving average',
              linewidth=4)
     plt.plot(bydate[['date', 'num_infections']].set_index('date'), label='Number of infections', color='Darkgreen')
