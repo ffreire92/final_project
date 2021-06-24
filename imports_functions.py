@@ -292,6 +292,6 @@ def pred_deaths(dataframe):
     model = ARMA(dataframe, order=(2, 6)).fit(disp=False)
     aux = add_days(dataframe)
     train = aux[:-7]
-    return pd.DataFrame(model.predict(len(train), len(aux) - 1), columns=['pred_num_deaths'])
+    return pd.DataFrame(model.predict(len(train), len(aux) - 1), columns=['pred_num_dead'])
 
 
