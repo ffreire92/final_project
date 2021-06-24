@@ -252,3 +252,46 @@ def training_models(bydate, measure):
         dataframe = pd.DataFrame(bydate.loc[:, 'ave_7_num_dead'], columns=['ave_7_num_dead'])
 
     return dataframe[6:]
+
+
+def add_days(dataframe):
+    '''It has as input a dataframe and adds to it the days to be predicted'''
+    dataframe = dataframe.append(pd.Series(name='2021-06-11 00:00:00'))
+    dataframe = dataframe.append(pd.Series(name='2021-06-12 00:00:00'))
+    dataframe = dataframe.append(pd.Series(name='2021-06-13 00:00:00'))
+    dataframe = dataframe.append(pd.Series(name='2021-06-14 00:00:00'))
+    dataframe = dataframe.append(pd.Series(name='2021-06-15 00:00:00'))
+    dataframe = dataframe.append(pd.Series(name='2021-06-16 00:00:00'))
+    dataframe = dataframe.append(pd.Series(name='2021-06-17 00:00:00'))
+
+    return dataframe
+
+def pred_infections(dataframe):
+    '''It has as input a dataframe (infections) and trains it with ARMA model'''
+    model = ARMA(dataframe, order=(4, 2)).fit(disp=False)
+    aux = add_days(dataframe)
+    train = aux[:-7]
+    return pd.DataFrame(model.predict(len(train), len(aux) - 1), columns=['pred_num_infections'])
+
+def pred_hosp(dataframe):
+    '''It has as input a dataframe (hospitalisations) and trains it with ARMA model'''
+    model = ARMA(dataframe, order=(19, 11)).fit(disp=False)
+    aux = add_days(dataframe)
+    train = aux[:-7]
+    return pd.DataFrame(model.predict(len(train), len(aux) - 1), columns=['pred_num_hosp'])
+
+def pred_uci(dataframe):
+    '''It has as input a dataframe (icu) and trains it with ARMA model'''
+    model = ARMA(dataframe, order=(2, 6)).fit(disp=False)
+    aux = add_days(dataframe)
+    train = aux[:-7]
+    return pd.DataFrame(model.predict(len(train), len(aux) - 1), columns=['pred_num_uci'])
+
+def pred_deaths(dataframe):
+    '''It has as input a dataframe (deaths) and trains it with ARMA model'''
+    model = ARMA(dataframe, order=(2, 6)).fit(disp=False)
+    aux = add_days(dataframe)
+    train = aux[:-7]
+    return pd.DataFrame(model.predict(len(train), len(aux) - 1), columns=['pred_num_deaths'])
+
+

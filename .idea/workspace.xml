@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="adbd61c9-8f7e-4d5f-b2b3-5f268f5cb4e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pandemic_v2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Pandemic_v2.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prediction_7days.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Prediction_7days.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Predictions_model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Predictions_model.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imports_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/imports_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_test.pbix" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_test.pbix" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
