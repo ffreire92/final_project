@@ -3,9 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="adbd61c9-8f7e-4d5f-b2b3-5f268f5cb4e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algo_2006.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algo_2006_2.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pandemic_Overview.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Pandemic_v2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Pandemic_v2.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imports_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/imports_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/last7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/last7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prediction_7days.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Predictions.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions_final.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_draft1.pbix" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_draft1_backup.pbix" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_last.pbix" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_test.pbix" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/region.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/region_province.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
