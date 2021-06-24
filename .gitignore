@@ -1,4 +1,6 @@
-.csv
-old
-data
-.ipynb_checkpoints
+*.csv
+old/
+data/
+*.ipynb_checkpoints
+__pycache__/
+*.idea
