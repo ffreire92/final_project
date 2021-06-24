@@ -7,6 +7,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pylab as plt
 plt.rcParams['figure.figsize']=(15, 15)
+import warnings
+warnings.simplefilter('ignore')
+
+from statsmodels.tsa.arima_model import ARMA
+from sklearn.metrics import mean_squared_error as mse
 
 ## FUNCTIONS ##
 
@@ -169,6 +174,7 @@ def clean_data(db1):
 # Cumulative #
 
 def cumulative(dataframe):
+    '''It has as input a dataframe and calculates the cumulative frequency of the number of infections, hospitalisations, ICU and deaths'''
     cumu_num_infections = dataframe.num_infections.cumsum()
     cumu_num_hosp = dataframe.num_hosp.cumsum()
     cumu_num_uci = dataframe.num_uci.cumsum()
@@ -205,6 +211,7 @@ def organise(db1, column):
 # Moving averages: 7 days moving average #
 
 def mov_7_ave(dataframe):
+    '''It has as inputs a dataframe and it calculates the 7 day moving average for the number of infections, hospitalisations, ICU and deaths'''
     dataframe['ave_7_num_infections'] = dataframe.loc[:, 'num_infections'].rolling(window=7).mean()
     dataframe['ave_7_num_hosp'] = dataframe.loc[:, 'num_hosp'].rolling(window=7).mean()
     dataframe['ave_7_num_uci'] = dataframe.loc[:, 'num_uci'].rolling(window=7).mean()
@@ -215,8 +222,33 @@ def mov_7_ave(dataframe):
 # Evolution #
 
 def evolution(dataframe):
+    '''It has as input a dataframe and it a new dataframe, grouped by date and with the cumulative and the 7 day moving average for the number of infections, hospitalisations, ICU and deaths. Note that date is not the index!'''
     bydate = dataframe.groupby('date').sum().reset_index()
     bydate = cumulative(bydate)
     bydate = mov_7_ave(bydate)
 
     return bydate
+
+# Training models #
+
+def training_models(bydate, measure):
+    '''it has as input the by date dateframe, and returns the m7 day moving average according to the measure defined'''
+    if measure == 'infections':
+
+        dataframe = pd.DataFrame(bydate.loc[:, 'ave_7_num_infections'], columns=['ave_7_num_infections'])
+
+
+    elif measure == 'hospitalisations':
+
+        dataframe = pd.DataFrame(bydate.loc[:, 'ave_7_num_hosp'], columns=['ave_7_num_hosp'])
+
+
+    elif measure == 'icu':
+
+        dataframe = pd.DataFrame(bydate.loc[:, 'ave_7_num_uci'], columns=['ave_7_num_uci'])
+
+    elif measure == 'deaths':
+
+        dataframe = pd.DataFrame(bydate.loc[:, 'ave_7_num_dead'], columns=['ave_7_num_dead'])
+
+    return dataframe[6:]
