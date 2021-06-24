@@ -1,6 +1,0 @@
-*.csv
-old/
-data/
-*.ipynb_checkpoints
-__pycache__/
-*.idea
