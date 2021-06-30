@@ -1,9 +1,9 @@
 ## Pandemic overview in Spain
 
+In this article, we analyse the covid-19 pandemic evolution in Spain.
+
 ![capture](https://user-images.githubusercontent.com/80853620/123978043-d296a100-d9bf-11eb-9b75-987b42c8ae19.png)
 
-
-In this article, we analyse the covid-19 pandemic evolution in Spain.
 
 The data was extracted from https://datamarket.es/, containing the following information:
 
