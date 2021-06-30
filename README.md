@@ -1,7 +1,6 @@
 ## Pandemic overview in Spain
 
-
-![covid_2](https://user-images.githubusercontent.com/80853620/123977349-34a2d680-d9bf-11eb-8eff-5322a3528fd9.png)
+![capture](https://user-images.githubusercontent.com/80853620/123978043-d296a100-d9bf-11eb-9b75-987b42c8ae19.png)
 
 
 In this article, we analyse the covid-19 pandemic evolution in Spain.
